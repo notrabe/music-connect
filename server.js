@@ -12,6 +12,9 @@ const profileRouter = require('./routes/api/profile')
 //connect database
 connectDB()
 
+//init middleware
+app.use(express.json({extended: false}))
+
 app.get('/', (req, res) => {
     res.send('Hello')
 })
