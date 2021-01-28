@@ -5,95 +5,67 @@ const Profile = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    company: {
-        type: String
-    },
-    website: {
-        type: String
-    },
+    activeBands:[{
+        name: {
+            type: String,
+            required: true
+        },
+        instruments: {
+            type: [String], 
+            required: true
+        },
+        formed: {
+            type: Date
+        },
+        genre: {
+            type: String
+        }
+    }],
     location: {
         type: String
     },
-    status: {
-        type: String,
-        required: true
-    },
-    skills: {
+    instruments: {
         type: [String],
         required: true
     },
     bio: {
         type: String
     },
-    githubusername: {
-        type: String
-    },
-    experience: [{
-        title: {
+    pastBands: [{
+        name: {
             type: String,
             required: true
         },
-        company: {
+        instruments: {
             type: String,
-            required: true
         },
         location: {
             type: String
         },
         from: {
             type: Date,
-            required: true
         },
         to: {
             type: Date
         },
-        current: {
-            type: Boolean,
-            default: false
-        },
-        description: {
-            type: String
-        }
-    }],
-    education: [{
-        school: {
-            type: String,
-            required: true
-        },
-        degree: {
-            type: String,
-            required: true
-        },
-        fieldofstudy: {
-            type: String,
-            required: true
-        },
-        from: {
-            type: Date,
-            required: true
-        },
-        to: {
-            type: Date
-        },
-        current: {
-            type: Boolean,
-            default: false
-        },
-        description: {
+        genre: {
             type: String
         }
     }],
     social: {
-        youtube: {
+        bandcamp: {
             type: String
         },
-        twitter: {
+        soundcloud: {
+            type: String
+        },
+        youtube: {
             type: String
         },
         facebook: {
             type: String
         },
-        linkedin: {
+        twitter: {
             type: String
         },
         instagram: {
