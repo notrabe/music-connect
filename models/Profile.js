@@ -24,7 +24,7 @@ const Profile = new mongoose.Schema({
             type: [String], 
             required: true
         },
-        formed: {
+        from: {
             type: Date
         },
         genre: {
@@ -81,3 +81,5 @@ const Profile = new mongoose.Schema({
     },
 
 })
+
+module.exports = mongoose.model('profile', Profile)
