@@ -15,7 +15,7 @@ const Profile = new mongoose.Schema({
     bio: {
         type: String
     },
-    activeBands:[{
+    bands:[{
         name: {
             type: String,
             required: true
@@ -27,6 +27,12 @@ const Profile = new mongoose.Schema({
         from: {
             type: Date
         },
+        to: {
+            type: Date
+        },
+        current: {
+            type: Boolean
+        },
         genre: {
             type: String
         },
@@ -34,27 +40,27 @@ const Profile = new mongoose.Schema({
             type: String
         }
     }],
-    pastBands: [{
-        name: {
-            type: String,
-            required: true
-        },
-        instruments: {
-            type: String,
-        },
-        location: {
-            type: String
-        },
-        from: {
-            type: Date,
-        },
-        to: {
-            type: Date
-        },
-        genre: {
-            type: String
-        }
-    }],
+    // pastBands: [{
+    //     name: {
+    //         type: String,
+    //         required: true
+    //     },
+    //     instruments: {
+    //         type: String,
+    //     },
+    //     location: {
+    //         type: String
+    //     },
+    //     from: {
+    //         type: Date,
+    //     },
+    //     to: {
+    //         type: Date
+    //     },
+    //     genre: {
+    //         type: String
+    //     }
+    // }],
     social: {
         bandcamp: {
             type: String

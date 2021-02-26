@@ -140,5 +140,52 @@ router.delete('/', auth, async (req, res) => {
     }
 })
 
+//@route    PUT api/profile/experience
+//@desc     Add profile experience
+//@access   Private
+router.put('/bands', [auth, [
+    check('name', 'name is required').not().isEmpty(),
+    check('instruments', 'instruments is required').not().isEmpty(),
+]], async (req, res) => {
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors: errors.array()})
+    }
+
+    const{
+        name,
+        instruments,
+        from, 
+        to,
+        current,
+        genre,
+        bandcamp,
+        soundcloud
+    } = req.body
+
+    const newBand = {
+        name,
+        instruments,
+        from, 
+        to,
+        current,
+        genre,
+        bandcamp,
+        soundcloud
+    }
+
+    try {
+        const profile = await Profile.findOne({user:req.user.id})
+
+        profile.bands.unshift(newBand)
+
+        await profile.save()
+
+        res.json(profile)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server error')
+    }
+})
 
 module.exports = router
