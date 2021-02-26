@@ -140,8 +140,8 @@ router.delete('/', auth, async (req, res) => {
     }
 })
 
-//@route    PUT api/profile/experience
-//@desc     Add profile experience
+//@route    PUT api/profile/bands
+//@desc     Add band to profile
 //@access   Private
 router.put('/bands', [auth, [
     check('name', 'name is required').not().isEmpty(),
@@ -178,6 +178,27 @@ router.put('/bands', [auth, [
         const profile = await Profile.findOne({user:req.user.id})
 
         profile.bands.unshift(newBand)
+
+        await profile.save()
+
+        res.json(profile)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server error')
+    }
+})
+
+//@route    DELETE api/profile/bands/:band_id
+//@desc     Delete band from profile
+//@access   Private
+router.delete('/bands/:band_id', auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({user:req.user.id})
+
+        // Get remove index
+        const removeIndex = profile.bands.map(item => item.id).indexOf(req.params.band_id)
+
+        profile.bands.splice(removeIndex, 1)
 
         await profile.save()
 

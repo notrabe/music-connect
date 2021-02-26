@@ -38,6 +38,9 @@ const Profile = new mongoose.Schema({
         },
         bandcamp: {
             type: String
+        },
+        soundcloud: {
+            type: String
         }
     }],
     // pastBands: [{
