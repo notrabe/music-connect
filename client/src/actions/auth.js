@@ -61,14 +61,16 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   }
 };
 
-// Login user
+// Login User
 export const login = (email, password) => async (dispatch) => {
+  const body = { email, password };
+
   const config = {
     headers: {
       'Content-type': 'application/json',
+      'x-auth-token': 'token',
     },
   };
-  const body = JSON.stringify({ email, password });
 
   try {
     const res = await axios.post('/api/auth', body, config);
@@ -85,6 +87,7 @@ export const login = (email, password) => async (dispatch) => {
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
+
     dispatch({
       type: LOGIN_FAIL,
     });
