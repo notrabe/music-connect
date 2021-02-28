@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
+import { deleteBand } from '../../actions/profile';
 
-const Band = ({ band }) => {
+const Band = ({ band, deleteBand }) => {
   const bands = band.map((band) => (
     <tr key={band._id}>
       <td>{band.name}</td>
@@ -17,7 +18,9 @@ const Band = ({ band }) => {
         )}
       </td>
       <td>
-        <button className="btn btn-danger">Delete</button>
+        <button onClick={() => deleteBand(band._id)} className="btn btn-danger">
+          Delete
+        </button>
       </td>
     </tr>
   ));
@@ -42,6 +45,7 @@ const Band = ({ band }) => {
 
 Band.propTypes = {
   band: PropTypes.array.isRequired,
+  deleteBand: PropTypes.func.isRequired,
 };
 
-export default connect(null)(Band);
+export default connect(null, { deleteBand })(Band);
