@@ -5,6 +5,7 @@ import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import DashboardActions from './DashboardActions';
+import Band from './Band';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -28,6 +29,7 @@ const Dashboard = ({
         <>
           {' '}
           <DashboardActions />
+          <Band band={profile.bands} />
         </>
       ) : (
         <>
