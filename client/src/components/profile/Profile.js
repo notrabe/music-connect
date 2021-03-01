@@ -6,6 +6,7 @@ import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
+import ProfileBands from './ProfileBands';
 
 const Profile = ({
   getProfileById,
@@ -35,6 +36,18 @@ const Profile = ({
           <div className="profile-grid my-1">
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
+            <div className="profile-exp bg-white p-2">
+              <h2 className="text-primary">Bands</h2>
+              {profile.bands.length > 0 ? (
+                <>
+                  {profile.bands.map((band) => (
+                    <ProfileBands key={band._id} bands={band} />
+                  ))}
+                </>
+              ) : (
+                <h4>No bands</h4>
+              )}
+            </div>
           </div>
         </div>
       )}
