@@ -370,8 +370,7 @@ button {
   grid-template-areas:
     'top top'
     'about about'
-    'exp edu'
-    'github github';
+    'exp exp';
   grid-gap: 1rem;
 }
 
