@@ -71,6 +71,10 @@ const AddBand = ({ addBand, history }) => {
             }}
             required
           />
+          <small className="form-text">
+            Please use comma separated values (eg. Guitar, Bass, Drums, Vocals,
+            etc.)
+          </small>
         </div>
         <div class="form-group">
           <h4>From Date</h4>
