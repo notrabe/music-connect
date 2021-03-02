@@ -13,6 +13,7 @@ import AddBand from './components/profile-forms/AddBand';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import Posts from './components/posts/Posts';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -53,6 +54,7 @@ const App = () => {
                 component={EditProfile}
               />
               <PrivateRoute exact path="/add-band" component={AddBand} />
+              <PrivateRoute exact path="/posts" component={Posts} />
             </Switch>
           </section>
         </>
