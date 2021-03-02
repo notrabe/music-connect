@@ -3,13 +3,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPosts } from '../../actions/post';
 import Spinner from '../layout/Spinner';
+import PostItem from './PostItem';
 import { post } from 'request';
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, []);
-  return <div></div>;
+  return loading ? (
+    <Spinner />
+  ) : (
+    <div>
+      <h1>Posts</h1>
+      <p className="lead">
+        <i className="fas fa-user"></i> Welcome to the community
+      </p>
+
+      <div className="posts">
+        {posts.map((post) => (
+          <PostItem key={post.id} post={post} />
+        ))}{' '}
+      </div>
+    </div>
+  );
 };
 
 Posts.propTypes = {
