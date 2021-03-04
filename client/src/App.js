@@ -24,8 +24,10 @@ const App = () => {
       <Router>
         <>
           <Navbar />
-          <Route exact path="/" component={Landing} />
-          <Route component={Routes} />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route component={Routes} />
+          </Switch>
         </>
       </Router>
     </Provider>
